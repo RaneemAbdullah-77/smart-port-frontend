@@ -1,0 +1,82 @@
+.auth-alert,
+.auth-alert * {
+    box-sizing: border-box;
+}
+
+.auth-alert {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--auth-space-3, 10px);
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid transparent;
+    border-radius: var(--auth-radius-card, 9px);
+    direction: rtl;
+    font-family: inherit;
+    font-size: 0.88rem;
+    font-weight: 500;
+    line-height: 1.7;
+}
+
+.auth-alert__icon {
+    display: inline-grid;
+    flex: 0 0 22px;
+    flex-shrink: 0;
+    width: 22px;
+    height: 22px;
+    margin-top: 2px;
+    place-items: center;
+    border-radius: 50%;
+    font-size: 0.8rem;
+    font-weight: 800;
+    line-height: 1;
+}
+
+.auth-alert__content {
+    flex: 1;
+    min-width: 0;
+}
+
+.auth-alert--success {
+    color: #05603a;
+    background-color: #ecfdf3;
+    border-color: #abefc6;
+}
+
+.auth-alert--success .auth-alert__icon {
+    color: #ffffff;
+    background-color: #079455;
+}
+
+.auth-alert--error {
+    color: var(--auth-color-danger, #912018);
+    background-color: #fef3f2;
+    border-color: #fecdca;
+}
+
+.auth-alert--error .auth-alert__icon {
+    color: #ffffff;
+    background-color: #d92d20;
+}
+
+.auth-alert--info {
+    color: #1849a9;
+    background-color: #eff8ff;
+    border-color: #b2ddff;
+}
+
+.auth-alert--info .auth-alert__icon {
+    color: #ffffff;
+    background-color: #2e90fa;
+}
+
+.auth-alert--warning {
+    color: #93370d;
+    background-color: #fffaeb;
+    border-color: #fedf89;
+}
+
+.auth-alert--warning .auth-alert__icon {
+    color: #ffffff;
+    background-color: #dc6803;
+}
