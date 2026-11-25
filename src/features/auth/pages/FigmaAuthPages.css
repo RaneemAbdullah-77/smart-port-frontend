@@ -1,0 +1,420 @@
+.figma-auth {
+  --auth-hero: none;
+  position: relative;
+  min-height: 100vh;
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-end;
+  overflow: hidden;
+  direction: rtl;
+  background-image: var(--auth-hero);
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  color: #172b43;
+  font-family: 'Cairo', 'Tahoma', sans-serif;
+}
+
+.figma-auth::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(0, 0, 0, 0.08), rgba(16, 43, 78, 0.12));
+  pointer-events: none;
+}
+
+.figma-auth__card {
+  position: relative;
+  z-index: 1;
+  width: 606px;
+  height: 844px;
+  margin-top: clamp(24px, 7.226vh, 74px);
+  margin-inline-end: clamp(24px, 5.834vw, 84px);
+  padding: 0;
+  border: 0;
+  background: url('../../../assets/login-frame.svg') center / 100% 100% no-repeat;
+  box-shadow: none;
+}
+
+.figma-auth__card h1 {
+  position: absolute;
+  margin: 0;
+  color: #0b2240;
+  font-size: 44px;
+  line-height: 1.25;
+  text-align: center;
+  font-weight: 800;
+  direction: rtl;
+}
+
+.figma-auth__form {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.figma-auth__form label {
+  display: grid;
+  gap: 8px;
+  width: 100%;
+  color: #172b43;
+  font-weight: 700;
+}
+
+.figma-auth__form label span {
+  padding-inline-end: 8px;
+  font-size: 16px;
+  opacity: 0.72;
+}
+
+.figma-auth__form input {
+  height: 88px;
+  width: 100%;
+  border: 2px solid #102b4e;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.5);
+  padding: 18px 28px;
+  direction: rtl;
+  color: #172b43;
+  font-family: inherit;
+  font-size: 32px;
+  outline: none;
+  text-align: right;
+}
+
+.figma-auth__form input::placeholder {
+  color: rgba(0, 0, 0, 0.5);
+  opacity: 1;
+  font-weight: 400;
+}
+
+.figma-auth__form input:focus {
+  border-color: #2878bd;
+  box-shadow: 0 0 0 4px rgba(40, 120, 189, 0.12);
+}
+
+.figma-auth__input--error {
+  border-color: #ff1f25 !important;
+}
+
+.figma-auth__forgot,
+.figma-auth__error,
+.figma-auth__subtitle,
+.figma-auth__question {
+  color: rgba(0, 0, 0, 0.68);
+  font-weight: 800;
+}
+
+.figma-auth__forgot {
+  align-self: flex-start;
+  margin-top: -12px;
+  color: rgba(0, 0, 0, 0.7);
+  font-size: 18px;
+  text-decoration: none;
+}
+
+.figma-auth__error {
+  color: #e44444;
+  margin: -14px 0 0;
+  font-size: 18px;
+  text-align: right;
+}
+
+.figma-auth__subtitle {
+  margin: -22px 0 56px;
+  font-size: 23px;
+  line-height: 1.8;
+  text-align: center;
+}
+
+.figma-auth__question {
+  margin: 36px 0 70px;
+  color: rgba(0, 0, 0, 0.72);
+  font-size: 32px;
+  line-height: 1.45;
+  text-align: center;
+}
+
+.figma-auth__actions {
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  margin-top: 12px;
+}
+
+.figma-auth__primary {
+  min-width: 162px;
+  height: 80px;
+  border: 0;
+  border-radius: 12px;
+  background: #2b6cb0;
+  color: #fff;
+  font-family: inherit;
+  font-size: 32px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.figma-auth__primary:hover {
+  background: #225d9b;
+}
+
+.figma-auth__toast {
+  position: absolute;
+  z-index: 3;
+  left: 573px;
+  top: 479px;
+  width: 390px;
+  min-height: 116px;
+  display: grid;
+  grid-template-columns: 24px 1fr 18px;
+  gap: 16px;
+  align-items: start;
+  padding: 20px;
+  border: 1px solid #48c1b5;
+  border-radius: 12px;
+  background: #f6fff9;
+  box-shadow: 0 4px 16px rgba(16, 11, 39, 0.08);
+}
+
+.figma-auth__toast-icon {
+  width: 24px;
+  height: 24px;
+  display: grid;
+  place-items: center;
+  border-radius: 6px;
+  background: #48c1b5;
+  color: #fff;
+}
+
+.figma-auth__toast div {
+  display: grid;
+  gap: 4px;
+  direction: ltr;
+  color: #27303a;
+}
+
+.figma-auth__toast div strong {
+  font-family: 'Poppins', sans-serif;
+  text-transform: capitalize;
+}
+
+.figma-auth__toast div span {
+  direction: rtl;
+  color: #2f3f53;
+  font-weight: 800;
+  text-align: right;
+}
+
+.figma-auth__toast button {
+  border: 0;
+  background: transparent;
+  color: #979faa;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+/* Figma desktop canvas: 1440 x 1024 */
+.figma-auth__card--login {
+  margin-top: clamp(24px, 8.789vh, 90px);
+  margin-inline-end: clamp(24px, 4.653vw, 67px);
+}
+
+.figma-auth__card--login h1 {
+  top: 136px;
+  left: 148px;
+  width: 419px;
+  height: 123px;
+  text-align: right;
+}
+
+.figma-auth__card--login .figma-auth__form {
+  position: absolute;
+  top: 305px;
+  right: 94px;
+  width: 419px;
+  height: 440px;
+  display: block;
+  direction: rtl;
+}
+
+.figma-auth__card--login .figma-auth__form label {
+  position: absolute;
+  left: 0;
+  width: 419px;
+  height: 88px;
+  gap: 0;
+}
+
+.figma-auth__card--login .figma-auth__form label:nth-of-type(1) {
+  top: 0;
+}
+
+.figma-auth__card--login .figma-auth__form label:nth-of-type(2) {
+  top: 117px;
+}
+
+.figma-auth__form label span {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  opacity: 0;
+}
+
+.figma-auth__card--login .figma-auth__forgot {
+  position: absolute;
+  right: 0;
+  top: 208px;
+  width: 419px;
+  height: 34px;
+  margin: 0;
+  text-align: right;
+  direction: rtl;
+  white-space: nowrap;
+}
+
+.figma-auth__card--login .figma-auth__primary {
+  position: absolute;
+  left: 223px;
+  bottom: -15px;
+  width: 162px;
+}
+
+.figma-auth__card--login .figma-auth__error {
+  position: absolute;
+  right: 0;
+  top: 320px;
+  width: 419px;
+  margin: 0;
+  text-align: right;
+}
+
+.figma-auth__card--narrow h1 {
+  top: 144px;
+  left: 93px;
+  width: 419px;
+  height: 97px;
+  text-align: center;
+}
+
+.figma-auth__card--narrow {
+  background-image: url('../../../assets/forgot-password-frame.svg');
+}
+
+.figma-auth__card--narrow .figma-auth__subtitle {
+  position: absolute;
+  top: 266px;
+  left: 173px;
+  width: 400px;
+  margin: 0;
+  text-align: right;
+  direction: rtl;
+}
+
+.figma-auth__card--narrow .figma-auth__form {
+  position: absolute;
+  top: 392px;
+  left: 103px;
+  width: 419px;
+}
+
+.figma-auth__card--narrow .figma-auth__form input {
+  height: 88px;
+}
+
+.figma-auth__card--narrow .figma-auth__actions {
+  position: absolute;
+  top: 282px;
+  left: 0;
+  width: 419px;
+  margin: 0;
+  justify-content: space-between;
+}
+
+.figma-auth__card--logout h1 {
+  top: 168px;
+  left: 154px;
+  width: 419px;
+  height: 97px;
+  text-align: right;
+}
+
+.figma-auth__card--logout {
+  background-image: url('../../../assets/logout-frame.svg');
+}
+
+.figma-auth__card--logout .figma-auth__question {
+  position: absolute;
+  top: 287px;
+  left: 49px;
+  width: 507px;
+  margin: 0;
+  text-align: right;
+}
+
+.figma-auth__card--logout .figma-auth__actions {
+  position: absolute;
+  top: 532px;
+  left: 103px;
+  width: 419px;
+  margin: 0;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+}
+
+@media (max-width: 900px), (max-height: 760px) {
+  .figma-auth {
+    align-items: flex-start;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  .figma-auth__card,
+  .figma-auth__card--narrow,
+  .figma-auth__card--login,
+  .figma-auth__card--logout {
+    width: min(92vw, 606px);
+    min-height: calc(100vh - 32px);
+    margin: 16px;
+    padding: 72px 32px 40px;
+  }
+
+  .figma-auth__card h1 {
+    margin-bottom: 36px;
+    font-size: 34px;
+  }
+
+  .figma-auth__form input {
+    height: 72px;
+    font-size: 24px;
+  }
+
+  .figma-auth__primary {
+    min-width: 130px;
+    height: 64px;
+    font-size: 24px;
+  }
+
+  .figma-auth__toast {
+    left: 50%;
+    top: 36%;
+    width: min(390px, calc(100vw - 32px));
+    transform: translateX(-50%);
+  }
+}
+
+@media (min-width: 901px) and (max-height: 900px) {
+  .figma-auth__card {
+    transform: scale(0.82);
+    transform-origin: top right;
+  }
+}
+
+@media (min-width: 901px) and (max-height: 760px) {
+  .figma-auth__card {
+    transform: scale(0.72);
+  }
+}
