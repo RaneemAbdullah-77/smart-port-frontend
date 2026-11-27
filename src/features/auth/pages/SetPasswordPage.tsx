@@ -1,6 +1,7 @@
 import { FormEvent, useState } from 'react'
 import type { CSSProperties } from 'react'
 import { useNavigate } from 'react-router-dom'
+import PasswordInput from '../components/PasswordInput'
 import vesselImage from '../../../assets/login-error-vessel.png'
 import './FigmaAuthPages.css'
 
@@ -11,7 +12,7 @@ function SetPasswordPage() {
 
   const handleSubmit = (event: FormEvent) => {
     event.preventDefault()
-    if (password && password === confirmation) navigate('/reset-password-success')
+    if (password && password === confirmation) navigate('/login')
   }
 
   return (
@@ -21,11 +22,11 @@ function SetPasswordPage() {
         <form className="figma-auth__form" onSubmit={handleSubmit}>
           <label>
             <span>كلمة المرور الجديدة</span>
-            <input type="password" placeholder="كلمة المرور الجديدة" value={password} onChange={(event) => setPassword(event.target.value)} aria-label="كلمة المرور الجديدة" />
+            <PasswordInput label="" placeholder="كلمة المرور الجديدة" value={password} onChange={(event) => setPassword(event.target.value)} aria-label="كلمة المرور الجديدة" autoComplete="new-password" required />
           </label>
           <label>
             <span>تأكيد كلمة المرور</span>
-            <input type="password" placeholder="تأكيد كلمة المرور" value={confirmation} onChange={(event) => setConfirmation(event.target.value)} aria-label="تأكيد كلمة المرور" />
+            <PasswordInput label="" placeholder="تأكيد كلمة المرور" value={confirmation} onChange={(event) => setConfirmation(event.target.value)} aria-label="تأكيد كلمة المرور" autoComplete="new-password" required />
           </label>
           {confirmation && password !== confirmation && <p className="figma-auth__error">كلمتا المرور غير متطابقتين</p>}
           <button className="figma-auth__primary" type="submit">حفظ</button>

@@ -6,7 +6,7 @@
   width: 100%;
   display: flex;
   align-items: flex-start;
-  justify-content: flex-end;
+  justify-content: flex-start;
   overflow: hidden;
   direction: rtl;
   background-image: var(--auth-hero);
@@ -31,7 +31,7 @@
   width: 606px;
   height: 844px;
   margin-top: clamp(24px, 7.226vh, 74px);
-  margin-inline-end: clamp(24px, 5.834vw, 84px);
+  margin-inline-start: clamp(24px, 5.834vw, 84px);
   padding: 0;
   border: 0;
   background: url('../../../assets/login-frame.svg') center / 100% 100% no-repeat;
@@ -69,7 +69,8 @@
   opacity: 0.72;
 }
 
-.figma-auth__form input {
+.figma-auth__form input,
+.figma-auth__card--narrow .figma-auth__form input {
   height: 88px;
   width: 100%;
   border: 2px solid #102b4e;
@@ -164,7 +165,7 @@
 .figma-auth__toast {
   position: absolute;
   z-index: 3;
-  left: 573px;
+  inset-inline-end: 573px;
   top: 479px;
   width: 390px;
   min-height: 116px;
@@ -219,12 +220,12 @@
 /* Figma desktop canvas: 1440 x 1024 */
 .figma-auth__card--login {
   margin-top: clamp(24px, 8.789vh, 90px);
-  margin-inline-end: clamp(24px, 4.653vw, 67px);
+  margin-inline-start: clamp(24px, 4.653vw, 67px);
 }
 
 .figma-auth__card--login h1 {
   top: 136px;
-  left: 148px;
+  inset-inline-end: 148px;
   width: 419px;
   height: 123px;
   text-align: right;
@@ -233,7 +234,7 @@
 .figma-auth__card--login .figma-auth__form {
   position: absolute;
   top: 305px;
-  right: 94px;
+  inset-inline-start: 94px;
   width: 419px;
   height: 440px;
   display: block;
@@ -242,7 +243,7 @@
 
 .figma-auth__card--login .figma-auth__form label {
   position: absolute;
-  left: 0;
+  inset-inline-end: 0;
   width: 419px;
   height: 88px;
   gap: 0;
@@ -266,7 +267,7 @@
 
 .figma-auth__card--login .figma-auth__forgot {
   position: absolute;
-  right: 0;
+  inset-inline-start: 0;
   top: 208px;
   width: 419px;
   height: 34px;
@@ -278,14 +279,14 @@
 
 .figma-auth__card--login .figma-auth__primary {
   position: absolute;
-  left: 223px;
+  inset-inline-end: 223px;
   bottom: -15px;
   width: 162px;
 }
 
 .figma-auth__card--login .figma-auth__error {
   position: absolute;
-  right: 0;
+  inset-inline-start: 0;
   top: 320px;
   width: 419px;
   margin: 0;
@@ -294,7 +295,7 @@
 
 .figma-auth__card--narrow h1 {
   top: 144px;
-  left: 93px;
+  inset-inline-end: 93px;
   width: 419px;
   height: 97px;
   text-align: center;
@@ -307,7 +308,7 @@
 .figma-auth__card--narrow .figma-auth__subtitle {
   position: absolute;
   top: 266px;
-  left: 173px;
+  inset-inline-end: 173px;
   width: 400px;
   margin: 0;
   text-align: right;
@@ -317,7 +318,7 @@
 .figma-auth__card--narrow .figma-auth__form {
   position: absolute;
   top: 392px;
-  left: 103px;
+  inset-inline-end: 103px;
   width: 419px;
 }
 
@@ -328,15 +329,23 @@
 .figma-auth__card--narrow .figma-auth__actions {
   position: absolute;
   top: 282px;
-  left: 0;
+  inset-inline-end: 0;
   width: 419px;
   margin: 0;
   justify-content: space-between;
 }
 
+.figma-auth__card--narrow > .figma-auth__primary {
+  position: absolute;
+  top: 532px;
+  inset-inline-end: 50%;
+  transform: translateX(-50%);
+  max-width: calc(100% - 48px);
+}
+
 .figma-auth__card--logout h1 {
   top: 168px;
-  left: 154px;
+  inset-inline-end: 154px;
   width: 419px;
   height: 97px;
   text-align: right;
@@ -349,7 +358,7 @@
 .figma-auth__card--logout .figma-auth__question {
   position: absolute;
   top: 287px;
-  left: 49px;
+  inset-inline-end: 49px;
   width: 507px;
   margin: 0;
   text-align: right;
@@ -358,51 +367,178 @@
 .figma-auth__card--logout .figma-auth__actions {
   position: absolute;
   top: 532px;
-  left: 103px;
+  inset-inline-end: 103px;
   width: 419px;
   margin: 0;
-  flex-direction: row-reverse;
+  flex-direction: row;
   justify-content: space-between;
 }
 
 @media (max-width: 900px), (max-height: 760px) {
+  html,
+  body,
+  #root {
+    height: auto;
+    min-height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+
   .figma-auth {
-    align-items: flex-start;
+    align-items: center;
     justify-content: center;
-    overflow: hidden;
+    min-height: 100vh;
+    height: auto;
+    padding: 16px 0;
+    overflow: visible;
   }
 
   .figma-auth__card,
   .figma-auth__card--narrow,
   .figma-auth__card--login,
   .figma-auth__card--logout {
-    width: min(92vw, 606px);
-    min-height: calc(100vh - 32px);
-    margin: 16px;
-    padding: 72px 32px 40px;
+    width: min(calc(100vw - 32px), 606px);
+    height: auto;
+    min-height: 0;
+    margin: 0;
+    padding: 40px clamp(20px, 6vw, 36px);
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 24px;
+    background-size: 100% 100%;
+    transform: none;
   }
 
   .figma-auth__card h1 {
-    margin-bottom: 36px;
-    font-size: 34px;
+    position: static;
+    width: auto;
+    height: auto;
+    margin: 0;
+    font-size: clamp(28px, 7vw, 36px);
+    line-height: 1.35;
+    text-align: center;
+  }
+
+  .figma-auth__form,
+  .figma-auth__card--login .figma-auth__form,
+  .figma-auth__card--narrow .figma-auth__form {
+    position: static;
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .figma-auth__form label,
+  .figma-auth__card--login .figma-auth__form label {
+    position: static;
+    width: 100%;
+    height: auto;
+    gap: 8px;
+  }
+
+  .figma-auth__form label span {
+    position: static;
+    width: auto;
+    height: auto;
+    overflow: visible;
+    opacity: 1;
+    font-size: 14px;
   }
 
   .figma-auth__form input {
-    height: 72px;
-    font-size: 24px;
+    height: 64px;
+    padding: 12px 16px;
+    font-size: clamp(16px, 4vw, 20px);
   }
 
-  .figma-auth__primary {
-    min-width: 130px;
-    height: 64px;
-    font-size: 24px;
+  .figma-auth__forgot,
+  .figma-auth__card--login .figma-auth__forgot {
+    position: static;
+    align-self: flex-start;
+    width: auto;
+    height: auto;
+    margin: 0;
+    font-size: 16px;
+    white-space: normal;
+  }
+
+  .figma-auth__subtitle,
+  .figma-auth__card--narrow .figma-auth__subtitle,
+  .figma-auth__question,
+  .figma-auth__card--logout .figma-auth__question {
+    position: static;
+    width: auto;
+    margin: 0;
+    font-size: clamp(18px, 4.5vw, 22px);
+    line-height: 1.7;
+    text-align: center;
+  }
+
+  .figma-auth__error,
+  .figma-auth__card--login .figma-auth__error {
+    position: static;
+    width: auto;
+    margin: 0;
+    font-size: 16px;
+  }
+
+  .figma-auth__actions,
+  .figma-auth__card--narrow .figma-auth__actions,
+  .figma-auth__card--logout .figma-auth__actions {
+    position: static;
+    width: 100%;
+    margin: 0;
+    justify-content: center;
+    gap: 16px;
+  }
+
+  .figma-auth__primary,
+  .figma-auth__card--login .figma-auth__primary {
+    position: static;
+    inset: auto;
+    width: auto;
+    min-width: min(130px, 100%);
+    max-width: 100%;
+    height: 60px;
+    margin: 0;
+    padding: 0 20px;
+    font-size: 22px;
+    white-space: normal;
+  }
+
+  .figma-auth__actions .figma-auth__primary {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .figma-auth__card--login .figma-auth__primary {
+    align-self: flex-end;
+  }
+
+  .figma-auth__card--narrow > .figma-auth__primary {
+    position: static;
+    align-self: center;
+    width: min(100%, 360px);
+    max-width: 100%;
+    transform: none;
+  }
+
+  .figma-auth__card--logout .figma-auth__actions {
+    flex-direction: row-reverse;
   }
 
   .figma-auth__toast {
-    left: 50%;
-    top: 36%;
-    width: min(390px, calc(100vw - 32px));
+    position: fixed;
+    top: 16px;
+    inset-inline-end: 50%;
     transform: translateX(-50%);
+  }
+
+  .figma-auth__toast {
+    width: min(390px, calc(100vw - 32px));
   }
 }
 
@@ -414,7 +550,5 @@
 }
 
 @media (min-width: 901px) and (max-height: 760px) {
-  .figma-auth__card {
-    transform: scale(0.72);
-  }
+  .figma-auth__card { transform: none; }
 }

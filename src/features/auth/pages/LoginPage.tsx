@@ -1,6 +1,7 @@
 import { FormEvent, useState } from 'react'
 import type { CSSProperties } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
+import PasswordInput from '../components/PasswordInput'
 import vesselImage from '../../../assets/login-error-vessel.png'
 import './FigmaAuthPages.css'
 
@@ -25,7 +26,7 @@ function LoginPage() {
           </label>
           <label>
             <span>كلمة المرور</span>
-            <input type="password" placeholder="كلمة المرور" value={password} onChange={(event) => setPassword(event.target.value)} aria-label="كلمة المرور" />
+            <PasswordInput label="" placeholder="كلمة المرور" value={password} onChange={(event) => setPassword(event.target.value)} aria-label="كلمة المرور" />
           </label>
           <Link className="figma-auth__forgot" to="/forgot-password">هل نسيت كلمة المرور؟</Link>
           <button className="figma-auth__primary" type="submit">الدخول</button>
